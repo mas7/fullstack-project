@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GetAllProjectsRequest;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Resources\ProjectCollection;
@@ -21,9 +22,11 @@ class ProjectController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): JsonResponse
+    public function index(GetAllProjectsRequest $request): JsonResponse
     {
-        $projects = $this->projectService->getAllProjects();
+        $data = $request->validated();
+
+        $projects = $this->projectService->getAllProjects($data);
 
         return response()->json([
             'message' => 'Project created successfully',
