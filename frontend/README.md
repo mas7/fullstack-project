@@ -22,7 +22,9 @@ To get started with this project, follow these steps:
 
    ```bash
    yarn install
-   # --
+   ```
+
+   ```bash
    npm install
    ```
 
@@ -30,7 +32,9 @@ To get started with this project, follow these steps:
 
    ```bash
    yarn run dev
-   # --
+   ```
+
+   ```bash
    npm run dev
    ```
 
