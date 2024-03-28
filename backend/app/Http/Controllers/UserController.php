@@ -8,6 +8,11 @@ use Illuminate\Http\JsonResponse;
 
 class UserController extends Controller
 {
+    /**
+     * Send emails to all users asynchronously.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function sendEmails(): JsonResponse
     {
         User::each(fn ($user) => SendEmailsJob::dispatch($user));

@@ -7,7 +7,6 @@ use App\Http\Requests\RegisterUserRequest;
 use App\Http\Resources\UserResource;
 use App\Services\AuthService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -16,6 +15,13 @@ class AuthController extends Controller
         // 
     }
 
+    /**
+     * Register a new user.
+     *
+     * @param  RegisterUserRequest  $request
+     * @return JsonResponse
+     * @throws \ErrorException
+     */
     public function register(RegisterUserRequest $request): JsonResponse
     {
         $data = $request->validated();
@@ -28,6 +34,13 @@ class AuthController extends Controller
         ]);
     }
 
+    /**
+     * Authenticate a user.
+     *
+     * @param  LoginUserRequest  $request
+     * @return JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function login(LoginUserRequest $request): JsonResponse
     {
         $data = $request->validated();
@@ -40,9 +53,14 @@ class AuthController extends Controller
         ]);
     }
 
-    public function logout(Request $request): JsonResponse
+    /**
+     * Log out the authenticated user (revoke the token).
+     *
+     * @return JsonResponse
+     */
+    public function logout(): JsonResponse
     {
-        $request->user()->tokens()->delete();
+        request()->user()->tokens()->delete();
 
         return response()->json(['message' => 'Logged out successfully']);
     }

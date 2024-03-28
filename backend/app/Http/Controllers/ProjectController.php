@@ -21,6 +21,9 @@ class ProjectController extends Controller
 
     /**
      * Display a listing of the resource.
+     *
+     * @param  GetAllProjectsRequest  $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index(GetAllProjectsRequest $request): JsonResponse
     {
@@ -29,13 +32,17 @@ class ProjectController extends Controller
         $projects = $this->projectService->getAllProjects($data);
 
         return response()->json([
-            'message' => 'Project created successfully',
+            'message' => 'Projects retrieved successfully',
             'data'    => new ProjectCollection($projects),
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
+     *
+     * @param  StoreProjectRequest  $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \ErrorException
      */
     public function store(StoreProjectRequest $request): JsonResponse
     {
@@ -51,6 +58,9 @@ class ProjectController extends Controller
 
     /**
      * Display the specified resource.
+     *
+     * @param  Project  $project
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show(Project $project): JsonResponse
     {
@@ -62,6 +72,11 @@ class ProjectController extends Controller
 
     /**
      * Update the specified resource in storage.
+     *
+     * @param  UpdateProjectRequest  $request
+     * @param  Project  $project
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \ErrorException
      */
     public function update(UpdateProjectRequest $request, Project $project): JsonResponse
     {
@@ -77,6 +92,9 @@ class ProjectController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @param  Project  $project
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(Project $project): JsonResponse
     {

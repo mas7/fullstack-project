@@ -10,6 +10,13 @@ use Illuminate\Validation\ValidationException;
 
 class AuthService
 {
+    /**
+     * Register a new user.
+     *
+     * @param  array  $data
+     * @return \App\Models\User
+     * @throws \ErrorException
+     */
     public function register(array $data): User
     {
         try {
@@ -28,6 +35,13 @@ class AuthService
         }
     }
 
+    /**
+     * Authenticate a user.
+     *
+     * @param  array  $credentials
+     * @return \App\Models\User
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function login(array $credentials): User
     {
         if (!Auth::attempt($credentials)) {

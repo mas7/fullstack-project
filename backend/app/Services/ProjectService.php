@@ -2,15 +2,19 @@
 
 namespace App\Services;
 
-use App\Http\Resources\ProjectResource;
 use App\Models\Project;
 use ErrorException;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 
 class ProjectService
 {
+    /**
+     * Retrieve all projects.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
     public function getAllProjects(array $data): LengthAwarePaginator
     {
         $projects = Project::query()
@@ -22,6 +26,13 @@ class ProjectService
         return $projects;
     }
 
+    /**
+     * Create a new project.
+     *
+     * @param  array  $data
+     * @return \App\Models\Project
+     * @throws \ErrorException
+     */
     public function createProject(array $data): Project
     {
         try {
@@ -37,6 +48,14 @@ class ProjectService
         }
     }
 
+    /**
+     * Update an existing project.
+     *
+     * @param  array  $data
+     * @param  \App\Models\Project  $project
+     * @return \App\Models\Project
+     * @throws \ErrorException
+     */
     public function updateProject(array $data, Project $project): Project
     {
         try {
