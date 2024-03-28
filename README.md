@@ -2,6 +2,14 @@
 
 This repository contains both the frontend and backend components of my fullstack project.
 
+## Getting Started
+
+- **Clone the repository:**
+
+  ```bash
+  git clone https://github.com/mas7/fullstack-project.git
+  ```
+
 ## Frontend
 
 👉 For instructions on setting up and running the frontend, please refer to the [Frontend README](https://github.com/mas7/fullstack-project/blob/main/frontend/README.md).
