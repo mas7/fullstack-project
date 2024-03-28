@@ -11,12 +11,13 @@ use Illuminate\Support\Facades\Log;
 
 class ProjectService
 {
-    public function getAllProjects(): LengthAwarePaginator
+    public function getAllProjects(array $data): LengthAwarePaginator
     {
         $projects = Project::query()
             ->with(['user'])
             ->owner()
-            ->paginate(10);
+            ->orderByDesc('created_at')
+            ->paginate(data_get($data, 'limit', 10));
 
         return $projects;
     }
