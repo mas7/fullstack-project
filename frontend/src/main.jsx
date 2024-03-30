@@ -17,6 +17,8 @@ import Dashboard from "./pages/dashboard/Dashboard.jsx";
 import CreateProject from "./pages/dashboard/components/create-project/CreateProject.jsx";
 import UpdateProject from "./pages/dashboard/components/update-project/UpdateProject.jsx";
 import toast, { Toaster } from "react-hot-toast";
+import SingleSignOn from "./pages/login/sso/SingleSignOn.jsx";
+import SingleSignOnToken from "./pages/login/sso/SingleSignOnToken.jsx";
 
 const isAuthenticated = () => {
   return !!localStorage.getItem("auth");
@@ -38,6 +40,14 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <UnauthenticatedRoute element={<Login />} />,
+  },
+  {
+    path: "/login/sso",
+    element: <UnauthenticatedRoute element={<SingleSignOn />} />,
+  },
+  {
+    path: "/login/sso/:token",
+    element: <UnauthenticatedRoute element={<SingleSignOnToken />} />,
   },
   {
     path: "/register",

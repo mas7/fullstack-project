@@ -29,6 +29,10 @@ const Login = () => {
     navigate("/register");
   };
 
+  const handleSSO = () => {
+    navigate("/login/sso");
+  };
+
   return (
     <Grid
       container
@@ -78,6 +82,15 @@ const Login = () => {
             onClick={handleRegister}
           >
             Register
+          </Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            sx={{ my: 2 }}
+            fullWidth
+            onClick={handleSSO}
+          >
+            Single Sign-On Link (SSO)
           </Button>
         </Container>
       </Grid>
